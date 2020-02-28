@@ -32,9 +32,11 @@ export class AzureCosmosDbCoreModule {
       provide: cosmosConnectionName,
       useFactory: async (): Promise<any> =>
         await defer(async () => {
+          console.log("Cosmos Options: " + JSON.stringify(cosmosDbOptions));
           const client = new CosmosClient(cosmosDbOptions);
           const dbResponse = await client.databases.createIfNotExists({
             id: dbName,
+
           });
           return dbResponse.database;
         })
