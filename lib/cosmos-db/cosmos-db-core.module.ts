@@ -61,6 +61,7 @@ export class AzureCosmosDbCoreModule {
       provide: cosmosConnectionName,
       useFactory: async (cosmosModuleOptions: AzureCosmosDbOptions): Promise<any> => {
         const { dbName, retryAttempts, retryDelay, connectionName, ...cosmosOptions } = cosmosModuleOptions;
+        console.log(cosmosModuleOptions);
 
         return await defer(async () => {
           const client = new CosmosClient(cosmosOptions);
