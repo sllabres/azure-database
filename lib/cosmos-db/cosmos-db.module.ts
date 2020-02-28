@@ -6,6 +6,7 @@ import { createAzureCosmosDbProviders } from './cosmos-db.providers';
 @Module({})
 export class AzureCosmosDbModule {
   static forRoot(options: AzureCosmosDbOptions): DynamicModule {
+    console.log(JSON.stringify(options));
     return {
       module: AzureCosmosDbModule,
       imports: [AzureCosmosDbCoreModule.forRoot(options)],
