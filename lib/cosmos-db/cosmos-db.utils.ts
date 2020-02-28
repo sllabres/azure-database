@@ -18,7 +18,7 @@ export function handleRetry(retryAttempts = 9, retryDelay = 3000): <T>(source: O
         e.pipe(
           scan((errorCount, error) => {
             Logger.error(
-              `Unable to connect to the cosmos db database. Retrying (${errorCount + 1})...`,
+              `Unable to connect to the cosmos db database. Retrying (${errorCount + 1})...${error}`,
               '',
               'AzureCosmosDbModule',
             );
