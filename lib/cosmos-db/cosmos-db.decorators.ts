@@ -14,9 +14,6 @@ function validateType(annotationType: AnnotationPropertyType, target: object /* 
     let propertyTypeName = '';
     if (annotationType === 'DateTime') {
       propertyTypeName = Date.name;      
-    } 
-    else if (annotationType === 'UniqueKey') {
-      propertyTypeName = CosmosUniqueKey.name;
     }
     else {
       throw new Error(`Type ${annotationType} is not supported. ${propertyKey}, ${propertyTypeName}`);
