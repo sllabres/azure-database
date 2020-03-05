@@ -6,6 +6,7 @@ export const AZURE_COSMOS_DB_ENTITY = 'cosmos-db:entity';
 type AnnotationPropertyType = 'PartitionKey' | 'DateTime' | 'UniqueKey';
 
 function validateType(annotationType: AnnotationPropertyType, target: object /* Function */, propertyKey?: string) {
+  
   if (propertyKey) {
     // tslint:disable-next-line: ban-types
     const propertyType = Reflect.getMetadata('design:type', target, propertyKey) as Function;
@@ -14,7 +15,7 @@ function validateType(annotationType: AnnotationPropertyType, target: object /* 
     if (annotationType === 'DateTime') {
       propertyTypeName = Date.name;
     } else {
-      throw new Error(`Type ${annotationType} is not supported.`);
+      throw new Error(`Type ${annotationType} is not supported.`, propertyKey, propertyTypeName);
     }
 
     if (propertyTypeName.toLowerCase().includes(propertyType.name.toLocaleLowerCase()) === false) {
