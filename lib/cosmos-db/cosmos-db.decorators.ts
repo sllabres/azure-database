@@ -15,7 +15,7 @@ function validateType(annotationType: AnnotationPropertyType, target: object /* 
     if (annotationType === 'DateTime') {
       propertyTypeName = Date.name;
     } else {
-      throw new Error(`Type ${annotationType} is not supported.`, propertyKey, propertyTypeName);
+      throw new Error(`Type ${annotationType} is not supported. ${propertyKey}, ${propertyTypeName}`);
     }
 
     if (propertyTypeName.toLowerCase().includes(propertyType.name.toLocaleLowerCase()) === false) {
